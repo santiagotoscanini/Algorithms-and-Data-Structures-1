@@ -2,7 +2,7 @@
 
 #ifndef EJERCICIOSSEM2_CPP
 #define EJERCICIOSSEM2_CPP
-
+int* quickSort(int *numeros, int izq, int der);
 void simplificar(int n, int d)
 {
 	int maximoDivisorComun = 1;
@@ -66,12 +66,13 @@ int maximoNumero(unsigned int n) {
 
 }
 
-void ordenarVecInt(int *vec, int largoVec) {
-	
+void ordenarVecInt(int * vec, int largoVec) {
+	vec = quickSort(vec, 0, largoVec - 1);
 
 
 };
-static int[] quickSort(int *numeros, int izq, int der) {
+
+int* quickSort(int *numeros, int izq, int der) {
 	if (izq >= der) { //si los punteros son iguales es porque estan en el mismo numero
 		return numeros;
 	}
@@ -104,5 +105,4 @@ static int[] quickSort(int *numeros, int izq, int der) {
 	}
 	return numeros;
 }
-
 #endif

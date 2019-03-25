@@ -1,8 +1,2 @@
-﻿  ColaArray.cpp
-  EjerciciosSem2.cpp
-c:\users\santi\downloads\algorithms-and-data-structures-1\ejerciciossem2.cpp(55): warning C4018: '<': signed/unsigned mismatch
-c:\users\santi\downloads\algorithms-and-data-structures-1\ejerciciossem2.cpp(59): warning C4018: '<': signed/unsigned mismatch
-  EjerciciosSem3.cpp
-  Generating Code...
-  LINK : C:\Users\santi\Downloads\Algorithms-and-Data-Structures-1\Debug\aFramework.exe not found or not built by the last incremental link; performing full link
+﻿  EjerciciosSem3.cpp
   aFramework.vcxproj -> C:\Users\santi\Downloads\Algorithms-and-Data-Structures-1\Debug\aFramework.exe

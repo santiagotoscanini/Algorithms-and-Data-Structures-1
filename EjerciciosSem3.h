@@ -33,10 +33,10 @@ Entrada: (['T','A','T','A'], 4, 1)
 Retorno: 2
 
 Ejemplo 2
-Entrada: (['T','T','A'
-		   'A','A','T'
-		   'A','A','A'
-		   'T','T','A'], 3, 4)
+Entrada: ([['T','T','A'],
+		   ['A','A','T'],
+		   ['A','A','A'],
+		   ['T','T','A']=, 3, 4)
 Retorno: 2
 */
 int islas(char** mapa, int col, int fil);

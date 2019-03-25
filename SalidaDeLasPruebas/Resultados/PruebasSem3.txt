@@ -1,101 +1,59 @@
 ----------------------------------------------
-Prueba Invertir Case de palabra 1 -> ERROR salida incorrecta
-	Parametros de entrada: 
-	Se esperaba: 
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 1 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 2 -> ERROR salida incorrecta
-	Parametros de entrada: hola
-	Se esperaba: HOLA
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 2 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 3 -> ERROR salida incorrecta
-	Parametros de entrada: Write in C
-	Se esperaba: wRITE IN c
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 3 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 4 -> ERROR salida incorrecta
-	Parametros de entrada: es UNA cosa DE locos
-	Se esperaba: ES una COSA de LOCOS
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 4 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 5 -> ERROR salida incorrecta
-	Parametros de entrada: EsCrIbIR asi Es MoLeSTOOO
-	Se esperaba: eScRiBir ASI eS mOlEstooo
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 5 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 6 -> ERROR salida incorrecta
-	Parametros de entrada: 1434
-	Se esperaba: 1434
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 6 -> OK
 ----------------------------------------------
-Prueba Invertir Case de palabra 7 -> ERROR salida incorrecta
-	Parametros de entrada: #&/()|A
-	Se esperaba: #&/()|a
-	Se recibio:  NULL
+Prueba Invertir Case de palabra 7 -> OK
 ----------------------------------------------
-PRUEBAS FUNCION PruebaInvertirCase                                 HAY PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PruebaInvertirCase                                 PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
 Prueba Islas 1 -> ERROR salida incorrecta
 	Parametros de entrada: ['T','A','T','A','T','A'], 6, 1
 	Se esperaba: 3
-	Se recibio:  0
+	Se recibio:  2
 ----------------------------------------------
 Prueba Islas 2 -> ERROR salida incorrecta
 	Parametros de entrada: ['T','A','T','A','T','A','T','T','T','T','T','T'], 6, 2
 	Se esperaba: 1
-	Se recibio:  0
+	Se recibio:  2
 ----------------------------------------------
-Prueba Islas 3 -> ERROR salida incorrecta
-	Parametros de entrada: ['T','A','T','A','T','T','T','A','T','A','A','T','T','A','A','T','T','T','T','A'], 10, 2
-	Se esperaba: 2
-	Se recibio:  0
+Prueba Islas 3 -> OK
 ----------------------------------------------
 Prueba Islas 4 -> ERROR salida incorrecta
 	Parametros de entrada: ['T','A','T','A','T','A','A','T','A','T','A','T','T','A','A','T','A','T','T','T','T','A','T','T'], 6, 4
 	Se esperaba: 1
-	Se recibio:  0
+	Se recibio:  2
 ----------------------------------------------
 Prueba Islas 5 -> ERROR salida incorrecta
 	Parametros de entrada: ['A','A','A','A','A','A','A','A','A','A','A','T','T','A','T','T','A','T','T','A','A','T','T','A','T','T','A','T','T','A','A','A','A','A','A','A','A','A','A','A'], 10, 4
 	Se esperaba: 3
-	Se recibio:  0
+	Se recibio:  2
 ----------------------------------------------
-Prueba Islas 6 -> ERROR salida incorrecta
-	Parametros de entrada: ['A','T','T','T','T','T','A','T','T','T','A','T','A','A','A','T','A','T','A','T','A','T','A','A','T','T','A','T','A','T','A','T','T','T','T','A','A','A','T','A'], 10, 4
-	Se esperaba: 2
-	Se recibio:  0
+Prueba Islas 6 -> OK
 ----------------------------------------------
 PRUEBAS FUNCION PruebaIslas                                        HAY PRUEBAS INCORRECTAS
 ----------------------------------------------
 ----------------------------------------------
-Prueba Ocurrencias Substring 1 -> ERROR salida incorrecta
-	Parametros de entrada: ['hola'], hola
-	Se esperaba: 1
-	Se recibio:  0
+Prueba Ocurrencias Substring 1 -> OK
 ----------------------------------------------
-Prueba Ocurrencias Substring 2 -> ERROR salida incorrecta
-	Parametros de entrada: ['abc','ab','ab'], ab
-	Se esperaba: 3
-	Se recibio:  0
+Prueba Ocurrencias Substring 2 -> OK
 ----------------------------------------------
-Prueba Ocurrencias Substring 3 -> ERROR salida incorrecta
-	Parametros de entrada: ['holaho','holahol','holahola','holaholahola','holaholaholaho'], holahola
-	Se esperaba: 3
-	Se recibio:  0
+Prueba Ocurrencias Substring 3 -> OK
 ----------------------------------------------
-Prueba Ocurrencias Substring 4 -> ERROR salida incorrecta
-	Parametros de entrada: ['abcjsdf','sagsdfg','afgadfg','afgadfg12','wertewrt','tyafgadfgsegfdxv','jo'], afgadfg
-	Se esperaba: 3
-	Se recibio:  0
+Prueba Ocurrencias Substring 4 -> OK
 ----------------------------------------------
-Prueba Ocurrencias Substring 5 -> ERROR salida incorrecta
-	Parametros de entrada: ['solsol'], sol
-	Se esperaba: 1
-	Se recibio:  0
+Prueba Ocurrencias Substring 5 -> OK
 ----------------------------------------------
-PRUEBAS FUNCION PruebaOcurrenciasSubstring                         HAY PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PruebaOcurrenciasSubstring                         PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
 Prueba ordenar vector de strings 1 -> ERROR salida incorrecta
@@ -373,5 +331,5 @@ PRUEBAS FUNCION PruebaOrdenarVecIntMergeSort                       HAY PRUEBAS I
 ----------------------------------------------
 ----------------------------------------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  0 INCORRECTAS:  8
+PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  2 INCORRECTAS:  6
 PRUEBAS FUNCIONES 

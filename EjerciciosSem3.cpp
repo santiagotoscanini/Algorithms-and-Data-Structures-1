@@ -1,7 +1,10 @@
 #include "EjerciciosSem3.h"
+#include "EjerciciosSem2.h"
 
 #ifndef EJERCICIOSSEM3_CPP
 #define EJERCICIOSSEM3_CPP
+
+
 char invertirChar(char altoChar);
 
 char* invertirCase(char* palabra)
@@ -64,16 +67,69 @@ unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
 
     return countStr;
 }
+int largoArrChar(char * lista) {
+	int i;
+	for (i = 0; lista[i] != '\0'; i++);
+	return i;
+}
+
+char **noComparteMemoria(char **vec,int str) {
+
+	char ** hola = new char*[str]();
+	for (int i = 0; i < str; i++)
+	{
+		hola[i] = new char[largoArrChar(vec[i])+1];
+	}
+
+	for (int i = 0; i < str; i++)
+	{
+		int length = largoArrChar(vec[i]);
+
+		for (int j = 0; j < length; j++)
+		{
+			hola[i][j] = vec [i][j];
+		}
+		hola[i][length] = '\0';
+	}
+	return hola;
+}
+
+
 
 char **ordenarVecStrings(char **vecStr, int largoVecStr)
 {
-	// IMPLEMENTAR SOLUCION
-    return NULL;
+	char ** hola = noComparteMemoria(vecStr,largoVecStr);
+
+
+
+    return hola;
 }
 
 int* intercalarVector(int* v1, int* v2, int l1, int l2){
-	// IMPLEMENTAR SOLUCION
-	return NULL;
+	int * v3 = new int[l1 + l2];
+	
+	if (l1 + l2 != 0) {
+		for (int i = 0; i < l1; i++)
+		{
+			int num = v1[i];
+			v3[i] = num;
+		}
+		for (int i = l1; i < l1 + l2; i++)
+		{
+			int num = v2[i - l1];
+
+			v3[i] = num;
+		}
+
+
+
+		return quickSort(v3, 0, l1 + l2 - 1);
+	}
+		
+	else {
+		return NULL;
+	}
+	
 }
 
 bool subconjuntoVector(int* v1, int* v2, int l1, int l2)
@@ -92,5 +148,7 @@ void ordenarVecIntMergeSort(int* vector, int largo)
 {
 	// IMPLEMENTAR SOLUCION
 }
+
+
 
 #endif

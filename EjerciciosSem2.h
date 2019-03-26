@@ -72,4 +72,7 @@ Vector resultante: ([2,4,5])
 */
 void ordenarVecInt(int *vec, int largoVec);
 
+
+int* quickSort(int *numeros, int izq, int der);
+
 #endif

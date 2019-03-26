@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 #include "Definiciones.h"
-
 /*
 PRE: Recibe un string palabra.
 POS: Retorna un nuevo string con el case Invertido. Es decir si un caracter es lowercase 
@@ -153,5 +152,6 @@ SALIDA
 Resultado = ( [1,2,3,4,5], 5 )
 */
 void ordenarVecIntMergeSort(int *vector, int largoVector);
+
 
 #endif

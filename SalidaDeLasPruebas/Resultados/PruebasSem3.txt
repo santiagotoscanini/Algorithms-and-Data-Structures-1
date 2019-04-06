@@ -16,31 +16,19 @@ Prueba Invertir Case de palabra 7 -> OK
 PRUEBAS FUNCION PruebaInvertirCase                                 PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
-Prueba Islas 1 -> ERROR salida incorrecta
-	Parametros de entrada: ['T','A','T','A','T','A'], 6, 1
-	Se esperaba: 3
-	Se recibio:  2
+Prueba Islas 1 -> OK
 ----------------------------------------------
-Prueba Islas 2 -> ERROR salida incorrecta
-	Parametros de entrada: ['T','A','T','A','T','A','T','T','T','T','T','T'], 6, 2
-	Se esperaba: 1
-	Se recibio:  2
+Prueba Islas 2 -> OK
 ----------------------------------------------
 Prueba Islas 3 -> OK
 ----------------------------------------------
-Prueba Islas 4 -> ERROR salida incorrecta
-	Parametros de entrada: ['T','A','T','A','T','A','A','T','A','T','A','T','T','A','A','T','A','T','T','T','T','A','T','T'], 6, 4
-	Se esperaba: 1
-	Se recibio:  2
+Prueba Islas 4 -> OK
 ----------------------------------------------
-Prueba Islas 5 -> ERROR salida incorrecta
-	Parametros de entrada: ['A','A','A','A','A','A','A','A','A','A','A','T','T','A','T','T','A','T','T','A','A','T','T','A','T','T','A','T','T','A','A','A','A','A','A','A','A','A','A','A'], 10, 4
-	Se esperaba: 3
-	Se recibio:  2
+Prueba Islas 5 -> OK
 ----------------------------------------------
 Prueba Islas 6 -> OK
 ----------------------------------------------
-PRUEBAS FUNCION PruebaIslas                                        HAY PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PruebaIslas                                        PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
 Prueba Ocurrencias Substring 1 -> OK
@@ -111,38 +99,23 @@ PRUEBAS FUNCION PruebaIntercalarVector                             PRUEBAS CORRE
 ----------------------------------------------
 Prueba Subconjunto Vector 1 -> OK
 ----------------------------------------------
-Prueba Subconjunto Vector 2 -> ERROR salida incorrecta
-	Parametros de entrada: [1,2,3], [1,2,3,4,5,6]
-	Se esperaba: true
-	Se recibio:  false
+Prueba Subconjunto Vector 2 -> OK
 ----------------------------------------------
 Prueba Subconjunto Vector 3 -> OK
 ----------------------------------------------
-Prueba Subconjunto Vector 4 -> ERROR salida incorrecta
-	Parametros de entrada: [2,2,2,3,54,6,7], [7,6,54,6,3,2]
-	Se esperaba: true
-	Se recibio:  false
+Prueba Subconjunto Vector 4 -> OK
 ----------------------------------------------
 Prueba Subconjunto Vector 5 -> OK
 ----------------------------------------------
-Prueba Subconjunto Vector 6 -> ERROR salida incorrecta
-	Parametros de entrada: [], []
-	Se esperaba: true
-	Se recibio:  false
+Prueba Subconjunto Vector 6 -> OK
 ----------------------------------------------
-Prueba Subconjunto Vector 7 -> ERROR salida incorrecta
-	Parametros de entrada: [], [2,3,1]
-	Se esperaba: true
-	Se recibio:  false
+Prueba Subconjunto Vector 7 -> OK
 ----------------------------------------------
 Prueba Subconjunto Vector 8 -> OK
 ----------------------------------------------
-Prueba Subconjunto Vector 9 -> ERROR salida incorrecta
-	Parametros de entrada: [1], [1]
-	Se esperaba: true
-	Se recibio:  false
+Prueba Subconjunto Vector 9 -> OK
 ----------------------------------------------
-PRUEBAS FUNCION PruebaSubconjuntoVector                            HAY PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PruebaSubconjuntoVector                            PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
 Prueba split de strings 1 -> ERROR salida incorrecta
@@ -301,5 +274,5 @@ PRUEBAS FUNCION PruebaOrdenarVecIntMergeSort                       HAY PRUEBAS I
 ----------------------------------------------
 ----------------------------------------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  3 INCORRECTAS:  5
+PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  5 INCORRECTAS:  3
 PRUEBAS FUNCIONES 

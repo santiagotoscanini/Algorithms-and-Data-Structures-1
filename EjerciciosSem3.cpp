@@ -4,7 +4,33 @@
 #ifndef EJERCICIOSSEM3_CPP
 #define EJERCICIOSSEM3_CPP
 
+int largoArrChar(char * lista) {
+	int i;
+	for (i = 0; lista[i] != '\0'; i++);
+	return i;
+}
 
+char **noComparteMemoria(char **vec, int str) {
+
+	char ** hola = new char*[str]();
+	for (int i = 0; i < str; i++)
+	{
+		hola[i] = new char[largoArrChar(vec[i]) + 1];
+	}
+
+	for (int i = 0; i < str; i++)
+	{
+		int length = largoArrChar(vec[i]);
+
+		for (int j = 0; j < length; j++)
+		{
+			hola[i][j] = vec[i][j];
+		}
+		hola[i][length] = '\0';
+	}
+	return hola;
+}
+void hundoIsla(int i, int j, int fil, int col, char ** mapa);
 char invertirChar(char altoChar);
 
 char* invertirCase(char* palabra)
@@ -33,20 +59,48 @@ char invertirChar(char altoChar) {
 	}
 }
 
-int islas(char** mapa, int col, int fil){
+int islas(char** mapa, int fil, int col){
 	
 	
-    return 2;
+	int contadorIsla = 0;
+	char ** mapita = noComparteMemoria(mapa, fil);
+	for (int i = 0; i < fil; i++)
+	{
+		for (int j = 0; j < col;j++)
+		{
+			if (mapita[i][j] == 'T') {
+				contadorIsla++;
+				hundoIsla(i, j, fil,col,mapita);
+			}
+		}
+	}
+
+    return contadorIsla;
 
 }
-
+void hundoIsla(int i, int j, int fil, int col, char ** mapa) {
+	if (i >= 0 && i < fil && j >= 0 && j < col) {
+		if (mapa[i][j]=='T')
+		{
+			mapa[i][j] = 'A';
+			int meMuevoEnI[] = {1,-1,0,0,1,-1,1,-1};
+			int meMuevoEnJ[] = {0,0,1,-1,1,1,-1,-1};
+			for (int k = 0; k < 8; k++)
+			{
+				int posIAdyacente = i + meMuevoEnI[k];
+				int posJAdyacente = j + meMuevoEnJ[k];
+				hundoIsla(posIAdyacente, posJAdyacente, fil, col, mapa);
+			}
+		}
+	}
+}
 
 unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
 {
 
 	int countStr = 0;
-	int countSub;
 	int countChars = 0;
+	int countSub;
 	for (countSub = 0; substr[countSub] != '\0'; countSub++);
 
 	for (int i = 0; i < largoVecStr; i++)
@@ -67,45 +121,29 @@ unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
 
     return countStr;
 }
-int largoArrChar(char * lista) {
-	int i;
-	for (i = 0; lista[i] != '\0'; i++);
-	return i;
-}
-
-char **noComparteMemoria(char **vec,int str) {
-
-	char ** hola = new char*[str]();
-	for (int i = 0; i < str; i++)
-	{
-		hola[i] = new char[largoArrChar(vec[i])+1];
-	}
-
-	for (int i = 0; i < str; i++)
-	{
-		int length = largoArrChar(vec[i]);
-
-		for (int j = 0; j < length; j++)
-		{
-			hola[i][j] = vec [i][j];
-		}
-		hola[i][length] = '\0';
-	}
-	return hola;
-}
-
-
 
 char **ordenarVecStrings(char **vecStr, int largoVecStr)
 {
 	char ** hola = noComparteMemoria(vecStr,largoVecStr);
 
-
-
     return hola;
 }
 
+
+
+int *noComparteMemoria(int*vec, int str) {
+
+	int * hola = new int[str]();
+	for (int i = 0; i < str; i++)
+	{
+		hola[i] = vec[i];
+	}
+
+	return hola;
+}
+
 int* intercalarVector(int* v1, int* v2, int l1, int l2){
+
 	int * v3 = new int[l1 + l2];
 	
 	if (l1 + l2 != 0) {
@@ -134,19 +172,38 @@ int* intercalarVector(int* v1, int* v2, int l1, int l2){
 
 bool subconjuntoVector(int* v1, int* v2, int l1, int l2)
 {
-	// IMPLEMENTAR SOLUCION
-	return false;
-}
+	
+	if (l1 == 0) {
+		return true;
+	}
+	else if (l2 == 0) {
+		return false;
+	}
 
+	for (int i = 0; i < l1; i++)
+	{
+		int j;
+		for (j = 0;  (j < l2) && (v1[i] != v2[j]) ; j++) {
+
+		}
+
+		if (j == l2) {
+			return false;
+		}
+	}
+
+
+	return true;
+}
+	
 char** splitStr(char* str, char separador, int &largoRet)
-{
-	// IMPLEMENTAR SOLUCION
+{	
 	return NULL;
 }
 
 void ordenarVecIntMergeSort(int* vector, int largo) 
 {
-	// IMPLEMENTAR SOLUCION
+	
 }
 
 

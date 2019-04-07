@@ -44,3 +44,151 @@ Prueba Ocurrencias Substring 5 -> OK
 PRUEBAS FUNCION PruebaOcurrenciasSubstring                         PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
+Prueba ordenar vector de strings 1 -> ERROR salida incorrecta
+	Parametros de entrada: ['paso','pasa','pasado','pasaron']
+	Se esperaba: ['pasa','pasado','pasaron','paso']
+	Se recibio:  ['paso','pasa','pasado','pasaron']
+----------------------------------------------
+Prueba ordenar vector de strings 2 -> OK
+----------------------------------------------
+Prueba ordenar vector de strings 3 -> ERROR salida incorrecta
+	Parametros de entrada: ['string','strings','substring','strong','strength']
+	Se esperaba: ['strength', 'string', 'strings', 'strong','substring']
+	Se recibio:  ['string','strings','substring','strong','strength']
+----------------------------------------------
+Prueba ordenar vector de strings 4 -> OK
+----------------------------------------------
+Prueba ordenar vector de strings 5 -> ERROR salida incorrecta
+	Parametros de entrada: ['153243','1532468','153246','15324679']
+	Se esperaba: ['153243', '153246', '15324679', '1532468']
+	Se recibio:  ['153243','1532468','153246','15324679']
+----------------------------------------------
+Prueba ordenar vector de strings 6 -> ERROR salida incorrecta
+	Parametros de entrada: ['algoritmos','algoritmia','algoritmo','algo']
+	Se esperaba: ['algo', 'algoritmia', 'algoritmo', 'algoritmos']
+	Se recibio:  ['algoritmos','algoritmia','algoritmo','algo']
+----------------------------------------------
+Prueba ordenar vector de strings 7 -> ERROR salida incorrecta
+	Parametros de entrada: ['123456','123546','123645','123598','123754','12365498','1232','12','123','12911']
+	Se esperaba: ['12','123', '1232', '123456', '123546','123598', '123645', '12365498', '123754', '12911']
+	Se recibio:  ['123456','123546','123645','123598','123754','12365498','1232','12','123','12911']
+----------------------------------------------
+PRUEBAS FUNCION PruebaOrdenarVecStr                                HAY PRUEBAS INCORRECTAS
+----------------------------------------------
+----------------------------------------------
+Prueba Intercalar Vectores 1 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 2 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 3 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 4 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 5 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 6 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 7 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 8 -> OK
+----------------------------------------------
+Prueba Intercalar Vectores 9 -> OK
+----------------------------------------------
+PRUEBAS FUNCION PruebaIntercalarVector                             PRUEBAS CORRECTAS
+----------------------------------------------
+----------------------------------------------
+Prueba Subconjunto Vector 1 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 2 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 3 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 4 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 5 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 6 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 7 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 8 -> OK
+----------------------------------------------
+Prueba Subconjunto Vector 9 -> OK
+----------------------------------------------
+PRUEBAS FUNCION PruebaSubconjuntoVector                            PRUEBAS CORRECTAS
+----------------------------------------------
+----------------------------------------------
+Prueba split de strings 1 -> OK
+----------------------------------------------
+Prueba split de strings 2 -> OK
+----------------------------------------------
+Prueba split de strings 3 -> OK
+----------------------------------------------
+Prueba split de strings 4 -> OK
+----------------------------------------------
+Prueba split de strings 5 -> OK
+----------------------------------------------
+Prueba split de strings 6 -> OK
+----------------------------------------------
+Prueba split de strings 7 -> OK
+----------------------------------------------
+Prueba split de strings 8 -> OK
+----------------------------------------------
+Prueba split de strings 9 -> OK
+----------------------------------------------
+Prueba split de strings 10 -> OK
+----------------------------------------------
+Prueba split de strings 11 -> OK
+----------------------------------------------
+Prueba split de strings 12 -> OK
+----------------------------------------------
+Prueba split de strings 13 -> OK
+----------------------------------------------
+PRUEBAS FUNCION PruebaSplitStr                                     PRUEBAS CORRECTAS
+----------------------------------------------
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 1 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 2 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 3 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 4 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 5 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 6 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 7 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 8 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 9 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 10 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 11 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 12 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 13 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 14 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 15 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 16 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 17 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 18 -> OK
+----------------------------------------------
+Prueba ordenar vector de int Mergesort 19 -> OK
+----------------------------------------------
+PRUEBAS FUNCION PruebaOrdenarVecIntMergeSort                       PRUEBAS CORRECTAS
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------
+PRUEBAS FUNCIONES 
+PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  7 INCORRECTAS:  1
+PRUEBAS FUNCIONES 

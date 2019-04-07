@@ -6,6 +6,7 @@
 
 int largoArrChar(char * lista) {
 	int i;
+
 	for (i = 0; lista[i] != '\0'; i++);
 	return i;
 }
@@ -27,7 +28,7 @@ char **noComparteMemoria(char **vec, int str) {
 	char ** hola = new char*[str]();
 	for (int i = 0; i < str; i++)
 	{
-		hola[i] = new char[largoArrChar(vec[i]) + 1];
+		hola[i] = new char[largoArrChar(vec[i])+1];
 	}
 
 	for (int i = 0; i < str; i++)
@@ -135,8 +136,13 @@ unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
 }
 
 bool mayor(char* ar1, char* ar2) {
-	int min = largoArrChar(ar1) > largoArrChar(ar2)
-		? largoArrChar(ar2) : largoArrChar(ar1);
+	int l1 = largoArrChar(ar1);
+
+
+	int l2 = largoArrChar(ar2);
+
+	int min = l1 > l2 ? l2 : l1;
+
 	bool may=false;
 
 	for (int i = 0; i < min && !may; i++)
@@ -144,32 +150,36 @@ bool mayor(char* ar1, char* ar2) {
 		may = may || ar1[i] > ar2[i];
 	}
 
-	return !may && largoArrChar(ar1) > largoArrChar(ar2);
+	return !may ? l1 > l2:may;
 }
 
 void swap(char** mat,int i,int j) {
-	char* i1 = copyArr(mat[i], largoArrChar(mat[i]));
+	char* i1 = copyArr(mat[i],largoArrChar(mat[i]));
+	char* j1 = copyArr(mat[j], largoArrChar(mat[j]));
 
-	mat[i] = mat[j];
-	mat[j] = i1;
+	delete[] mat[i];
+	delete[] mat[j];
+	mat[i] = i1;
+	mat[j] = j1;
 }
 
 char **ordenarVecStrings(char **vecStr, int largoVecStr)
 {
 	char ** hola = noComparteMemoria(vecStr,largoVecStr);
-	int n = largoVecStr;
-	do {
-		int newn = 0;
-		for (int i = 0; i < n; i++)
-		{
-			if (mayor(hola[i], hola[i + 1])) {
-				swap(hola,i,i+1);
-				newn = i;
-			}
-		}
-		n = newn;
+	//int n = largoVecStr;
+	//bool swapp = false;
 
-	} while (n<=1);
+	//do {
+	//	swapp = false;
+	//	for (int i = 0; i < n-1; i++)
+	//	{
+	//		if (mayor(hola[i], hola[i + 1])) {
+	//			swap(hola,i,i+1);
+	//			swapp = true;
+	//		}
+	//	}
+	//	n = n - 1;
+	//} while (!swapp);
 
     return hola;
 }
@@ -279,10 +289,74 @@ char** splitStr(char* str, char separador, int &largoRet)
 
 	return mat;
 }
+void merge(int arr[], int iz, int m, int d)
+{
+	int i, j, k;
+	int n1 = m - iz + 1;
+	int n2 = d - m;
+
+	int *I= new int[n1];
+	int *D = new int[n2];
+
+	//Cargando dos arreglos con las 2 mitades
+	for (i = 0; i < n1; i++)
+		I[i] = arr[iz + i];
+	for (j = 0; j < n2; j++)
+		D[j] = arr[m + 1 + j];
+	
+	i = 0; 
+	j = 0; 
+
+	//Reordeno en arr
+	for (k = iz; i < n1 && j < n2; k++)
+	{
+		if (I[i] <= D[j]){
+			arr[k] = I[i];
+			i++;
+		}else{
+			arr[k] = D[j];
+			j++;
+		}
+	}
+
+	//Copio lo restante de izquierda
+	while (i < n1)
+	{
+		arr[k] = I[i];
+		i++;
+		k++;
+	}
+
+	//Copio lo restande de derecha
+	while (j < n2)
+	{
+		arr[k] = D[j];
+		j++;
+		k++;
+	}
+}
+
+
+void mergeSort(int arr[], int i, int d)
+{
+	if (i < d)
+	{
+		//Calculo el medio
+		int m = (i+d) / 2;
+
+		//Ordeno ambas mitades
+		mergeSort(arr, i, m);
+		mergeSort(arr, m + 1, d);
+
+		//Junto todas las mitades
+		merge(arr, i, m, d);
+	}
+}
 
 void ordenarVecIntMergeSort(int* vector, int largo) 
 {
-	
+	mergeSort(vector, 0, largo - 1);
+
 }
 
 

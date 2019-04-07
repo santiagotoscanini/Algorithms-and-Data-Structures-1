@@ -10,6 +10,18 @@ int largoArrChar(char * lista) {
 	return i;
 }
 
+char* copyArr(char* ar, int len) {
+	char* a = new char[len];
+
+	for (int i = 0; i < len; i++)
+	{
+		a[i] = ar[i];
+	}
+	a[len] = '\0';
+
+	return a;
+}
+
 char **noComparteMemoria(char **vec, int str) {
 
 	char ** hola = new char*[str]();
@@ -122,14 +134,45 @@ unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
     return countStr;
 }
 
+bool mayor(char* ar1, char* ar2) {
+	int min = largoArrChar(ar1) > largoArrChar(ar2)
+		? largoArrChar(ar2) : largoArrChar(ar1);
+	bool may=false;
+
+	for (int i = 0; i < min && !may; i++)
+	{
+		may = may || ar1[i] > ar2[i];
+	}
+
+	return !may && largoArrChar(ar1) > largoArrChar(ar2);
+}
+
+void swap(char** mat,int i,int j) {
+	char* i1 = copyArr(mat[i], largoArrChar(mat[i]));
+
+	mat[i] = mat[j];
+	mat[j] = i1;
+}
+
 char **ordenarVecStrings(char **vecStr, int largoVecStr)
 {
 	char ** hola = noComparteMemoria(vecStr,largoVecStr);
+	int n = largoVecStr;
+	do {
+		int newn = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (mayor(hola[i], hola[i + 1])) {
+				swap(hola,i,i+1);
+				newn = i;
+			}
+		}
+		n = newn;
+
+	} while (n<=1);
 
     return hola;
 }
-
-
 
 int *noComparteMemoria(int*vec, int str) {
 
@@ -195,10 +238,46 @@ bool subconjuntoVector(int* v1, int* v2, int l1, int l2)
 
 	return true;
 }
+bool esVacio(char* ar, int len) {
+	int i;
+	for (i = 0;  ar[i] == ' ' && i<len; i++)
+	{
+
+	}
+	
+	return i == len;
+}
 	
 char** splitStr(char* str, char separador, int &largoRet)
 {	
-	return NULL;
+	char* spt1 = strtok(copyArr(str,largoArrChar(str)), &separador);
+
+	int len = 0;
+
+	if (spt1 == NULL) {
+		largoRet = 0;
+		return NULL;
+	}
+
+	for (len = 0; spt1 != NULL; len++) {
+
+		spt1 = strtok(NULL, &separador);
+	}
+
+	char* spt2= strtok(copyArr(str, largoArrChar(str)), &separador);
+	largoRet = len;
+
+	char** mat = new char *[len];
+
+	for (int i = 0; spt2 != NULL; i++)
+	{
+		mat[i] = copyArr(spt2, largoArrChar(spt2));
+
+		spt2 = strtok(NULL, &separador);
+	}
+
+
+	return mat;
 }
 
 void ordenarVecIntMergeSort(int* vector, int largo) 

@@ -5,7 +5,18 @@
 
 void eliminarNesimoDesdeElFinal(NodoLista*& lista, int &n) 
 {
-	// IMPLEMENTAR SOLUCION
+	if (lista != NULL) {
+
+		eliminarNesimoDesdeElFinal(lista->sig, n);
+
+		n--;
+
+		if (n == 0) {
+			NodoLista* p = lista;
+			lista = lista->sig;
+			delete[]p;
+		}
+	}
 }
 
 NodoLista* listaOrdenadaInsertionSort(NodoLista* l) 

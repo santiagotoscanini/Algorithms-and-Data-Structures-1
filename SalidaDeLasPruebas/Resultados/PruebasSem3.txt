@@ -44,36 +44,21 @@ Prueba Ocurrencias Substring 5 -> OK
 PRUEBAS FUNCION PruebaOcurrenciasSubstring                         PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
-Prueba ordenar vector de strings 1 -> ERROR salida incorrecta
-	Parametros de entrada: ['paso','pasa','pasado','pasaron']
-	Se esperaba: ['pasa','pasado','pasaron','paso']
-	Se recibio:  ['paso','pasa','pasado','pasaron']
+Prueba ordenar vector de strings 1 -> OK
 ----------------------------------------------
 Prueba ordenar vector de strings 2 -> OK
 ----------------------------------------------
-Prueba ordenar vector de strings 3 -> ERROR salida incorrecta
-	Parametros de entrada: ['string','strings','substring','strong','strength']
-	Se esperaba: ['strength', 'string', 'strings', 'strong','substring']
-	Se recibio:  ['string','strings','substring','strong','strength']
+Prueba ordenar vector de strings 3 -> OK
 ----------------------------------------------
 Prueba ordenar vector de strings 4 -> OK
 ----------------------------------------------
-Prueba ordenar vector de strings 5 -> ERROR salida incorrecta
-	Parametros de entrada: ['153243','1532468','153246','15324679']
-	Se esperaba: ['153243', '153246', '15324679', '1532468']
-	Se recibio:  ['153243','1532468','153246','15324679']
+Prueba ordenar vector de strings 5 -> OK
 ----------------------------------------------
-Prueba ordenar vector de strings 6 -> ERROR salida incorrecta
-	Parametros de entrada: ['algoritmos','algoritmia','algoritmo','algo']
-	Se esperaba: ['algo', 'algoritmia', 'algoritmo', 'algoritmos']
-	Se recibio:  ['algoritmos','algoritmia','algoritmo','algo']
+Prueba ordenar vector de strings 6 -> OK
 ----------------------------------------------
-Prueba ordenar vector de strings 7 -> ERROR salida incorrecta
-	Parametros de entrada: ['123456','123546','123645','123598','123754','12365498','1232','12','123','12911']
-	Se esperaba: ['12','123', '1232', '123456', '123546','123598', '123645', '12365498', '123754', '12911']
-	Se recibio:  ['123456','123546','123645','123598','123754','12365498','1232','12','123','12911']
+Prueba ordenar vector de strings 7 -> OK
 ----------------------------------------------
-PRUEBAS FUNCION PruebaOrdenarVecStr                                HAY PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PruebaOrdenarVecStr                                PRUEBAS CORRECTAS
 ----------------------------------------------
 ----------------------------------------------
 Prueba Intercalar Vectores 1 -> OK
@@ -190,5 +175,5 @@ PRUEBAS FUNCION PruebaOrdenarVecIntMergeSort                       PRUEBAS CORRE
 ----------------------------------------------
 ----------------------------------------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  7 INCORRECTAS:  1
+PRUEBAS FUNCIONES                                RESULTADO SEM3 => CORRECTAS:  8 INCORRECTAS:  0
 PRUEBAS FUNCIONES 

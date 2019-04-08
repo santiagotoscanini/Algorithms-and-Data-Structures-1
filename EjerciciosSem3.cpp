@@ -12,13 +12,13 @@ int largoArrChar(char * lista) {
 }
 
 char* copyArr(char* ar, int len) {
-	char* a = new char[len];
+	char* a = new char[len+1];
 
-	for (int i = 0; i < len; i++)
+	for (int i = 0; i < len+1; i++)
 	{
 		a[i] = ar[i];
 	}
-	a[len] = '\0';
+
 
 	return a;
 }
@@ -28,9 +28,9 @@ char **noComparteMemoria(char **vec, int str) {
 	char ** hola = new char*[str]();
 	for (int i = 0; i < str; i++)
 	{
-		hola[i] = new char[largoArrChar(vec[i])+1];
+		hola[i] = copyArr(vec[i],largoArrChar(vec[i]));
 	}
-
+/*
 	for (int i = 0; i < str; i++)
 	{
 		int length = largoArrChar(vec[i]);
@@ -40,7 +40,7 @@ char **noComparteMemoria(char **vec, int str) {
 			hola[i][j] = vec[i][j];
 		}
 		hola[i][length] = '\0';
-	}
+	}*/
 	return hola;
 }
 void hundoIsla(int i, int j, int fil, int col, char ** mapa);
@@ -137,49 +137,42 @@ unsigned int ocurrenciasSubstring(char **vecStr, int largoVecStr, char *substr)
 
 bool mayor(char* ar1, char* ar2) {
 	int l1 = largoArrChar(ar1);
-
-
 	int l2 = largoArrChar(ar2);
 
 	int min = l1 > l2 ? l2 : l1;
 
 	bool may=false;
 
-	for (int i = 0; i < min && !may; i++)
+	for (int i = 0; i < min; i++)
 	{
-		may = may || ar1[i] > ar2[i];
+		if (ar1[i] > ar2[i]) {
+			return true;
+		}
+		else if (ar1[i] < ar2[i]) {
+			return false;
+		}
 	}
-
-	return !may ? l1 > l2:may;
+	return l1 > l2;
 }
 
 void swap(char** mat,int i,int j) {
-	char* i1 = copyArr(mat[i],largoArrChar(mat[i]));
-	char* j1 = copyArr(mat[j], largoArrChar(mat[j]));
 
-	delete[] mat[i];
-	delete[] mat[j];
-	mat[i] = i1;
-	mat[j] = j1;
+	char * aux = mat[i];
+	mat[i] = mat[j];
+	mat[j] = aux;
 }
 
 char **ordenarVecStrings(char **vecStr, int largoVecStr)
 {
 	char ** hola = noComparteMemoria(vecStr,largoVecStr);
-	//int n = largoVecStr;
-	//bool swapp = false;
+	int n = largoVecStr;
 
-	//do {
-	//	swapp = false;
-	//	for (int i = 0; i < n-1; i++)
-	//	{
-	//		if (mayor(hola[i], hola[i + 1])) {
-	//			swap(hola,i,i+1);
-	//			swapp = true;
-	//		}
-	//	}
-	//	n = n - 1;
-	//} while (!swapp);
+	int i, j;
+	for (i = 0; i < n - 1; i++)
+		for (j = 0; j < n - i - 1; j++)
+			if (mayor(hola[j],hola[j+1]))
+				swap(hola,j,j+1);
+
 
     return hola;
 }
@@ -211,9 +204,6 @@ int* intercalarVector(int* v1, int* v2, int l1, int l2){
 
 			v3[i] = num;
 		}
-
-
-
 		return quickSort(v3, 0, l1 + l2 - 1);
 	}
 		

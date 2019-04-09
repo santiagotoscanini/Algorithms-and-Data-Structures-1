@@ -19,9 +19,38 @@ void eliminarNesimoDesdeElFinal(NodoLista*& lista, int &n)
 	}
 }
 
+void insert(NodoLista* l,NodoLista * elem) {
+	if (l != NULL) {
+		
+		if (elem->dato <= l->dato) {
+			NodoLista* n = new NodoLista;
+			n->dato = l->dato;
+			n->sig = l->sig;
+
+			l->dato = elem->dato;
+			l->sig = n;
+		}
+		else {
+			insert(l->sig, elem);
+		}
+	}
+
+}
+
+void insertSort() {
+
+}
+
 NodoLista* listaOrdenadaInsertionSort(NodoLista* l) 
 {
-	// IMPLEMENTAR SOLUCION
+	if (l != NULL) {
+		NodoLista* n = new NodoLista;
+		n->dato = l->dato;
+
+
+	}
+
+
 	return NULL;
 }
 

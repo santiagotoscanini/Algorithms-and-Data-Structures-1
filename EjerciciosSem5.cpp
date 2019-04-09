@@ -62,11 +62,43 @@ NodoLista* listaOrdenadaInsertionSort(NodoLista * l)
 	return insertSort(ln);
 }
 
-void listaOrdenadaSelectionSort(NodoLista * &l)
+void listaOrdenadaSelectionSort(NodoLista*& l)
 {
-	// IMPLEMENTAR SOLUCION
+	//int puntero = 0;
+	//while (!estaOrdenada(l, l->dato)) {
+	//	recorrida(l, puntero);
+	//}
+
+}
+/*
+void recorrida(NodoLista*& l, int desdeDonde) {
+
 }
 
+bool estaOrdenada(NodoLista*& l, int valorAnterior) {
+	bool valor = true;
+	if (l != NULL) {
+
+
+		if (valorAnterior > l->dato) {
+			valor = false;
+		}
+		else {
+			valor = valor && estaOrdenada(l->sig, l->dato);
+		}
+	}
+	else {
+		return true;
+	}
+	return valor;
+
+}
+void swapNodeValues(NodoLista*& l, NodoLista*& y) {
+	int aux = l->dato;
+	l->dato = y->dato;
+	y->dato = aux;
+}
+*/
 NodoLista* invertirParcial(NodoLista * l)
 {
 	NodoLista* l1 = listaNueva(l);

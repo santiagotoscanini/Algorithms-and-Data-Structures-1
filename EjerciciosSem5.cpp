@@ -3,7 +3,7 @@
 #ifndef EJERCICIOSSEM5_CPP
 #define EJERCICIOSSEM5_CPP
 
-void eliminarNesimoDesdeElFinal(NodoLista*& lista, int &n) 
+void eliminarNesimoDesdeElFinal(NodoLista*& lista, int& n)
 {
 	if (lista != NULL) {
 
@@ -19,93 +19,129 @@ void eliminarNesimoDesdeElFinal(NodoLista*& lista, int &n)
 	}
 }
 
-void insert(NodoLista* l,NodoLista * elem) {
-	if (l != NULL) {
-		
-		if (elem->dato <= l->dato) {
-			NodoLista* n = new NodoLista;
-			n->dato = l->dato;
-			n->sig = l->sig;
+NodoLista* insert(NodoLista* l, int elem) {
 
-			l->dato = elem->dato;
-			l->sig = n;
-		}
-		else {
-			insert(l->sig, elem);
-		}
+	if (l == NULL || elem <= l->dato) {
+		NodoLista* n = new NodoLista;
+		n->dato = elem;
+		n->sig = l;
+
+		return n;
+	}
+	else {
+		l->sig = insert(l->sig, elem);
+		return l;
 	}
 
-}
-
-void insertSort() {
 
 }
 
-NodoLista* listaOrdenadaInsertionSort(NodoLista* l) 
-{
-	if (l != NULL) {
+NodoLista* insertSort(NodoLista*& l) {
+	if (l != NULL)
+		return insert(insertSort(l->sig), l->dato);
+	else
+		return NULL;
+
+}
+NodoLista* listaNueva(NodoLista * l) {
+	if (l == NULL) {
+		return NULL;
+	}
+	else {
 		NodoLista* n = new NodoLista;
 		n->dato = l->dato;
+		n->sig = listaNueva(l->sig);
 
+		return n;
+	}
+}
+NodoLista* listaOrdenadaInsertionSort(NodoLista * l)
+{
+	NodoLista* ln = listaNueva(l);
+
+	return insertSort(ln);
+}
+
+void listaOrdenadaSelectionSort(NodoLista * &l)
+{
+	// IMPLEMENTAR SOLUCION
+}
+
+NodoLista* invertirParcial(NodoLista * l)
+{
+	NodoLista* l1 = listaNueva(l);
+	int pep = 1;
+	eliminarNesimoDesdeElFinal(l1, pep);
+
+	if (l1 != NULL) {
+		NodoLista* n = NULL;
+
+		while (l1 != NULL) {
+			NodoLista* nodo = new NodoLista;
+
+			if (n == NULL) {
+				nodo->sig = NULL;
+			}
+			else {
+				nodo->dato = l1->dato;
+				nodo->sig = n->sig;
+
+				n->sig = nodo;
+
+			}
+
+			l1 = l1->sig;
+		}
+
+		return n;
 
 	}
-
-
-	return NULL;
+	else {
+		return NULL;
+	}
 }
 
-void listaOrdenadaSelectionSort(NodoLista*& l)
-{
-	// IMPLEMENTAR SOLUCION
-}
-
-NodoLista* invertirParcial(NodoLista* l) 
+NodoLista* intercalarIter(NodoLista * l1, NodoLista * l2)
 {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-NodoLista* intercalarIter(NodoLista* l1, NodoLista* l2)
+NodoLista* intercalarRec(NodoLista * l1, NodoLista * l2)
 {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-NodoLista* intercalarRec(NodoLista* l1, NodoLista* l2)
+NodoLista* insComFin(NodoLista * l, int x)
 {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-NodoLista* insComFin(NodoLista* l, int x)
+NodoLista* exor(NodoLista * l1, NodoLista * l2)
 {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-NodoLista* exor(NodoLista* l1, NodoLista* l2)
-{
-	// IMPLEMENTAR SOLUCION
-	return NULL;
-}
-
-void eliminarDuplicadosListaOrdenadaDos(NodoLista*& l) 
+void eliminarDuplicadosListaOrdenadaDos(NodoLista * &l)
 {
 	// IMPLEMENTAR SOLUCION
 }
 
-bool palindromo(NodoLista* l)
+bool palindromo(NodoLista * l)
 {
 	// IMPLEMENTAR SOLUCION
 	return false;
 }
 
-void eliminarSecuencia(NodoLista* &l, NodoLista* secuencia) 
+void eliminarSecuencia(NodoLista * &l, NodoLista * secuencia)
 {
 	// IMPLEMENTAR SOLUCION
 }
 
-void moverNodo(NodoLista* &lista, unsigned int inicial, unsigned int final)
+void moverNodo(NodoLista * &lista, unsigned int inicial, unsigned int final)
 {
 	// IMPLEMENTAR SOLUCION
 }

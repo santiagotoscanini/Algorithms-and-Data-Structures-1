@@ -233,8 +233,6 @@ NodoLista* insComFin(NodoLista * l, int x)
 		NodoLista* last = l1; // ULTIMO DE LA LISTA A DEVOLVER
 
 		l1->dato = x;
-		l1->sig = NULL;
-
 
 		while (lastL->sig != NULL) {
 			lastL = lastL->sig;
@@ -267,27 +265,93 @@ NodoLista* insComFin(NodoLista * l, int x)
 	}
 }
 
+NodoLista* dif(NodoLista* l1, NodoLista* l2) {
+
+	NodoLista* n = new NodoLista; //LISTA A RETORNAR
+
+	if (l1 == NULL && l2 == NULL) {
+		n = NULL;
+	}
+	else if (l1 == NULL) {
+		n->dato = l2->dato;
+		n->sig = dif(l1, l2->sig);
+	}
+	else if (l2 == NULL) {
+		n->dato = l1->dato;
+		n->sig = dif(l1->sig, l2);
+	}
+	else if (l1->dato == l2->dato) {
+		n = dif(l1->sig, l2->sig);
+	}
+	else if (l1->dato < l2->dato) {
+		n->dato = l1->dato;
+		n->sig = dif(l1->sig, l2);
+	}
+	else {
+		n->dato = l2->dato;
+		n->sig = dif(l1, l2->sig);
+	}
+
+	return n;
+}
+
+void elimRep(NodoLista*& l)
+{
+	if (l != NULL) {
+		if (l->sig != NULL) {
+			if (l->dato == l->sig->dato) {
+				int dat = l->dato;
+				NodoLista* aux = l;
+
+				while (l != NULL && l->dato == dat) {
+					l = l->sig;
+				}
+				aux->sig = l;
+				l = aux;
+
+				elimRep(l);
+
+			}
+			else {
+				elimRep(l->sig);
+			}
+		}
+	}
+
+}
+
 NodoLista* exor(NodoLista * l1, NodoLista * l2)
 {
-	// IMPLEMENTAR SOLUCION
-	return NULL;
+	NodoLista* n1 = listaNueva(l1);
+	NodoLista* n2 = listaNueva(l2);
+
+	elimRep(n1);
+	elimRep(n2);
+
+	return dif(n1, n2);
 }
 
 void eliminarDuplicadosListaOrdenadaDos(NodoLista * &l)
 {
 	if (l != NULL) {
 		if (l->sig != NULL) {
-			if (l->sig->sig != NULL) {
-				if (l->dato == l->sig->dato) {
-					l->sig = l->sig->sig;
-					eliminarDuplicadosListaOrdenadaDos(l->sig);
+			if (l->dato == l->sig->dato) {
+				int dat = l->dato;
+
+				while (l != NULL && l->dato == dat) {
+					l = l->sig;
 				}
-				else {
-					eliminarDuplicadosListaOrdenadaDos(l->sig);
-				}
+
+
+				eliminarDuplicadosListaOrdenadaDos(l);
+
+			}
+			else {
+				eliminarDuplicadosListaOrdenadaDos(l->sig);
 			}
 		}
 	}
+
 }
 
 bool palindromo(NodoLista * l)

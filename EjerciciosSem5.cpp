@@ -43,6 +43,7 @@ NodoLista* insertSort(NodoLista*& l) {
 		return NULL;
 
 }
+
 NodoLista* listaNueva(NodoLista * l) {
 	if (l == NULL) {
 		return NULL;
@@ -55,6 +56,7 @@ NodoLista* listaNueva(NodoLista * l) {
 		return n;
 	}
 }
+
 NodoLista* listaOrdenadaInsertionSort(NodoLista * l)
 {
 	NodoLista* ln = listaNueva(l);
@@ -62,43 +64,37 @@ NodoLista* listaOrdenadaInsertionSort(NodoLista * l)
 	return insertSort(ln);
 }
 
-void listaOrdenadaSelectionSort(NodoLista * &l)
-{
-	//int puntero = 0;
-	//while (!estaOrdenada(l, l->dato)) {
-	//	recorrida(l, puntero);
-	//}
+NodoLista* menorDeLaLista(NodoLista * &lista) {
+	NodoLista* menorActual = lista;
+	NodoLista* elQueRecorre = lista;
 
-}
-/*
-void recorrida(NodoLista*& l, int desdeDonde) {
-
-}
-
-bool estaOrdenada(NodoLista*& l, int valorAnterior) {
-	bool valor = true;
-	if (l != NULL) {
-
-
-		if (valorAnterior > l->dato) {
-			valor = false;
+	while (elQueRecorre!=NULL) {
+		if (elQueRecorre->dato < menorActual->dato) {
+			menorActual = elQueRecorre;
 		}
-		else {
-			valor = valor && estaOrdenada(l->sig, l->dato);
-		}
+		elQueRecorre = elQueRecorre->sig;
 	}
-	else {
-		return true;
-	}
-	return valor;
-
+	return menorActual;
 }
-void swapNodeValues(NodoLista*& l, NodoLista*& y) {
+
+void swapNodeValues(NodoLista * &l, NodoLista * &y) {
+
 	int aux = l->dato;
 	l->dato = y->dato;
 	y->dato = aux;
+
 }
-*/
+
+void listaOrdenadaSelectionSort(NodoLista*& l)
+{
+	if (l != NULL) {
+		NodoLista* menor = menorDeLaLista(l);
+		swapNodeValues(l, menor);
+		listaOrdenadaSelectionSort(l->sig);
+	}
+
+}
+
 NodoLista* invertirParcial(NodoLista * l)
 {
 	NodoLista* l1 = listaNueva(l);
@@ -318,7 +314,7 @@ void elimRep(NodoLista*& l)
 		}
 	}
 
-}
+}    
 
 NodoLista* exor(NodoLista * l1, NodoLista * l2)
 {
@@ -369,6 +365,5 @@ void moverNodo(NodoLista * &lista, unsigned int inicial, unsigned int final)
 {
 	// IMPLEMENTAR SOLUCION
 }
-
 
 #endif

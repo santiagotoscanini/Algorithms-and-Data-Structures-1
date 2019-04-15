@@ -29,7 +29,7 @@ POS: Retorna una nueva lista (que no comparte memoria con la anterior) que conti
      La lista retornada no deberá compartir memoria con la lista recibida ni deberá modificarla.
      Se deberá utilizar el algoritmo InsertionSort para ordenar los elementos.
 
-Ejemplo
+Ejemplo	
 Entrada: (6,1,1,9)
 Salida: (1,1,6,9)
 */

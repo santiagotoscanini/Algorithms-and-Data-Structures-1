@@ -68,7 +68,7 @@ NodoLista* menorDeLaLista(NodoLista * &lista) {
 	NodoLista* menorActual = lista;
 	NodoLista* elQueRecorre = lista;
 
-	while (elQueRecorre!=NULL) {
+	while (elQueRecorre != NULL) {
 		if (elQueRecorre->dato < menorActual->dato) {
 			menorActual = elQueRecorre;
 		}
@@ -85,7 +85,7 @@ void swapNodeValues(NodoLista * &l, NodoLista * &y) {
 
 }
 
-void listaOrdenadaSelectionSort(NodoLista*& l)
+void listaOrdenadaSelectionSort(NodoLista * &l)
 {
 	if (l != NULL) {
 		NodoLista* menor = menorDeLaLista(l);
@@ -261,7 +261,7 @@ NodoLista* insComFin(NodoLista * l, int x)
 	}
 }
 
-NodoLista* dif(NodoLista* l1, NodoLista* l2) {
+NodoLista* dif(NodoLista * l1, NodoLista * l2) {
 
 	NodoLista* n = new NodoLista; //LISTA A RETORNAR
 
@@ -291,7 +291,7 @@ NodoLista* dif(NodoLista* l1, NodoLista* l2) {
 	return n;
 }
 
-void elimRep(NodoLista*& l)
+void elimRep(NodoLista * &l)
 {
 	if (l != NULL) {
 		if (l->sig != NULL) {
@@ -314,7 +314,7 @@ void elimRep(NodoLista*& l)
 		}
 	}
 
-}    
+}
 
 NodoLista* exor(NodoLista * l1, NodoLista * l2)
 {
@@ -358,12 +358,36 @@ bool palindromo(NodoLista * l)
 
 void eliminarSecuencia(NodoLista * &l, NodoLista * secuencia)
 {
-	// IMPLEMENTAR SOLUCION
+	if (l != NULL && secuencia != NULL) {
+		if (l->dato != secuencia->dato) {
+			eliminarSecuencia(l->sig, secuencia);
+		}
+		else {
+			NodoLista* r = l;
+			NodoLista* rs = secuencia;
+			bool b = true;
+
+			while (r != NULL && rs != NULL) {
+				b = b && r->dato == rs->dato;
+
+				rs = rs->sig;
+				r = r->sig;
+			}
+
+			if (b && rs == NULL) {
+				l = r;
+			}
+			else {
+				eliminarSecuencia(l->sig, secuencia);
+			}
+
+		}
+	}
 }
 
 void moverNodo(NodoLista * &lista, unsigned int inicial, unsigned int final)
 {
-	// IMPLEMENTAR SOLUCION
+
 }
 
 #endif

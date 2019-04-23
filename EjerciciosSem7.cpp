@@ -5,6 +5,7 @@
 #ifndef EJERCICIOSSEM7_CPP
 #define EJERCICIOSSEM7_CPP
 
+NodoLista* listaNueva(NodoLista* l);
 
 int altura(NodoAB* raiz){
 	if (raiz == NULL) {
@@ -38,9 +39,16 @@ bool existeCaminoConSuma(NodoAB* raiz, int sum) {
 	else if (raiz == NULL && sum != 0) {
 		return false;
 	}
-	else {
-		return sumaAr(raiz, true) == sum || sumaAr(raiz, false) == sum || 
-			existeCaminoConSuma(raiz->der, sum - raiz->dato) || existeCaminoConSuma(raiz->izq, sum - raiz->dato);
+	else if (raiz->der == NULL && raiz->izq == NULL) {
+		return raiz->dato == sum;
+	}
+	else if (raiz->der == NULL) {
+		return existeCaminoConSuma(raiz->izq, sum - raiz->dato);
+	}
+	else if (raiz->izq == NULL) {
+		return existeCaminoConSuma(raiz->der, sum - raiz->dato);
+	}else{
+		return existeCaminoConSuma(raiz->der,sum - raiz->dato) || existeCaminoConSuma(raiz->izq,sum -raiz->dato);
 	}
 	
 }
@@ -56,30 +64,34 @@ bool esArbolBalanceado(NodoAB *raiz) {
 }
 
 NodoLista* concatL(NodoLista* a, NodoLista* b) {
-	return NULL;
-	//if (a == NULL) {
-	//	return b;
-	//	
-	//}
-	//NodoLista* lr = new NodoLista;
-	//lr->dato = a->dato;
-	//if (lr->sig == NULL) {
-	//	lr->sig = b;
-	//}
-	//else {
-	//	lr->sig = concatL(a->sig, b);
-	//}
+	if (a == NULL) {
+		return listaNueva(b);		
+	}
+	NodoLista* lr = new NodoLista;
+	lr->dato = a->dato;
+	if (a->sig == NULL) {
+		lr->sig = listaNueva(b);
+	}
+	else {
+		lr->sig = concatL(a->sig, b);
+	}
 }
 
 NodoLista* enNivel(NodoAB *a, int k) {
-	//k = k - 1;
-	//if (a == NULL) {
-	//	return NULL;
-	//}
-	//else if(k==0){
-	//	NodoLista* l = enNivel(a->izq,k);
-	//}
-	return NULL;
+	k--;
+	if (a == NULL) {
+		return NULL;
+	}
+	else if (k == 0) {
+		NodoLista* l = new NodoLista;
+		l->dato = a->dato;
+		l->sig = NULL;
+
+		return l;
+	}
+	else {
+		return concatL(enNivel(a->der, k), enNivel(a->izq, k));
+	}
 }
 
 int cantNodosEntreNiveles(NodoAB* a, int desde, int hasta) {

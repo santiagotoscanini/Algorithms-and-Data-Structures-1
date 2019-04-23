@@ -7,7 +7,7 @@
 
 NodoLista* listaNueva(NodoLista* l);
 
-int altura(NodoAB* raiz){
+int altura(NodoAB* raiz) {
 	if (raiz == NULL) {
 		return 0;
 	}
@@ -22,7 +22,7 @@ bool sonIguales(NodoAB* p, NodoAB* q) {
 		return false;
 	}
 
-	return p->dato == q->dato && sonIguales(p->izq,q->izq) && sonIguales(p->der,q->der);
+	return p->dato == q->dato && sonIguales(p->izq, q->izq) && sonIguales(p->der, q->der);
 }
 
 int sumaAr(NodoAB* l, bool b) {
@@ -47,25 +47,26 @@ bool existeCaminoConSuma(NodoAB* raiz, int sum) {
 	}
 	else if (raiz->izq == NULL) {
 		return existeCaminoConSuma(raiz->der, sum - raiz->dato);
-	}else{
-		return existeCaminoConSuma(raiz->der,sum - raiz->dato) || existeCaminoConSuma(raiz->izq,sum -raiz->dato);
 	}
-	
+	else {
+		return existeCaminoConSuma(raiz->der, sum - raiz->dato) || existeCaminoConSuma(raiz->izq, sum - raiz->dato);
+	}
+
 }
 
-bool esArbolBalanceado(NodoAB *raiz) {
+bool esArbolBalanceado(NodoAB * raiz) {
 	if (raiz == NULL) {
 		return true;
 	}
 	int ai = altura(raiz->izq);
 	int ad = altura(raiz->der);
 
-	return (ai== ad || (ai-1) == ad || ai == (ad-1)) && esArbolBalanceado(raiz->izq) && esArbolBalanceado(raiz->der);
+	return (ai == ad || (ai - 1) == ad || ai == (ad - 1)) && esArbolBalanceado(raiz->izq) && esArbolBalanceado(raiz->der);
 }
 
-NodoLista* concatL(NodoLista* a, NodoLista* b) {
+NodoLista * concatL(NodoLista * a, NodoLista * b) {
 	if (a == NULL) {
-		return listaNueva(b);		
+		return listaNueva(b);
 	}
 	NodoLista* lr = new NodoLista;
 	lr->dato = a->dato;
@@ -75,9 +76,10 @@ NodoLista* concatL(NodoLista* a, NodoLista* b) {
 	else {
 		lr->sig = concatL(a->sig, b);
 	}
+	return lr;
 }
 
-NodoLista* enNivel(NodoAB *a, int k) {
+NodoLista* enNivel(NodoAB * a, int k) {
 	k--;
 	if (a == NULL) {
 		return NULL;
@@ -90,68 +92,121 @@ NodoLista* enNivel(NodoAB *a, int k) {
 		return l;
 	}
 	else {
-		return concatL(enNivel(a->der, k), enNivel(a->izq, k));
+		return concatL(enNivel(a->izq, k), enNivel(a->der, k));
 	}
 }
 
-int cantNodosEntreNiveles(NodoAB* a, int desde, int hasta) {
-	// IMPLEMENTAR SOLUCION
-	return 0;
+int largoLista(NodoLista * l) {
+	if (l == NULL) {
+		return 0;
+	}
+	return 1 + largoLista(l->sig);
 }
 
-NodoLista* camino(NodoAB *arbol, int x) {
+int cantNodosEntreNiveles(NodoAB * a, int desde, int hasta) {
+
+	if (desde > hasta || a == NULL)
+		return 0;
+
+	int r = 0;
+	for (int i = desde; i <= hasta; i++)
+	{
+		r += largoLista(enNivel(a, i));
+	}
+	return r;
+}
+
+NodoLista* camino(NodoAB * arbol, int x) {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-NodoAB* invertirHastak(NodoAB* a, int k){
+NodoAB* invertirHastak(NodoAB * a, int k) {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }
 
-void borrarNodoRaiz(NodoAB * & A) {
-	// IMPLEMENTAR SOLUCION
+NodoAB*& menorDelArbol(NodoAB * &tree) {
+
+	if (tree->izq == NULL) {
+		return tree;
+	}
+	else {
+		return menorDelArbol(tree->izq);
+	}
 }
 
-bool sumaABB(NodoAB* a, int n)
+void borrarNodoRaiz(NodoAB * &A) {
+	if (A->izq == NULL) {
+
+		NodoAB* X = A;
+		A = A->der;
+		delete[]X;
+	}
+	else if (A->der == NULL) {
+		NodoAB* X = A;
+		A = A->izq;
+		delete[]X;
+	}
+	else {
+		menorDelArbol(A->der)->izq = A->izq;
+		NodoAB* X = A;
+		A = A->der;
+		delete X;
+	}
+}
+
+bool sumaABB(NodoAB * a, int n)
 {
 	// IMPLEMENTAR SOLUCION
 	return false;
 }
 
-int sucesor(NodoAB* a, int n)
+NodoAB*& nodoEntre(NodoAB * &tree, int num) {
+	if (tree->izq == NULL || tree->der == NULL) {
+
+	}
+	else if (tree->dato > num) {
+		nodoEntre(tree->izq, num);
+	}
+	else if (tree->dato < num) {
+		nodoEntre(tree->der, num);
+	}
+
+}
+int sucesor(NodoAB * a, int n)
+{
+
+	return 0;
+}
+
+int nivelMasNodos(NodoAB * raiz, int nivelHasta) {
+	// IMPLEMENTAR SOLUCION
+	return 0;
+}
+
+void borrarPares(NodoAB * &a) {
+	// IMPLEMENTAR SOLUCION
+}
+
+int alturaAG(NodoAG * raiz)
 {
 	// IMPLEMENTAR SOLUCION
 	return 0;
 }
 
-int nivelMasNodos(NodoAB* raiz, int nivelHasta) {
+int sumaPorNiveles(NodoAG * raiz) {
 	// IMPLEMENTAR SOLUCION
 	return 0;
 }
 
-void borrarPares(NodoAB* & a){
-	// IMPLEMENTAR SOLUCION
-}
-
-int alturaAG(NodoAG* raiz)
-{
-	// IMPLEMENTAR SOLUCION
-	return 0;
-}
-
-int sumaPorNiveles(NodoAG* raiz){
-	// IMPLEMENTAR SOLUCION
-	return 0;
-}
-
-bool esPrefijo(NodoAG *a, NodoLista *l)
+bool esPrefijo(NodoAG * a, NodoLista * l)
 {
 	// IMPLEMENTAR SOLUCION
 	return false;
 }
 
-NodoLista* caminoAG(NodoAG *arbolGeneral, int dato) {
+NodoLista* caminoAG(NodoAG * arbolGeneral, int dato) {
 	// IMPLEMENTAR SOLUCION
 	return NULL;
 }

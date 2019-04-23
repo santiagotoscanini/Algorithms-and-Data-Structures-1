@@ -88,7 +88,6 @@ NodoLista* enNivel(NodoAB * a, int k) {
 		NodoLista* l = new NodoLista;
 		l->dato = a->dato;
 		l->sig = NULL;
-
 		return l;
 	}
 	else {
@@ -96,6 +95,7 @@ NodoLista* enNivel(NodoAB * a, int k) {
 	}
 }
 
+<<<<<<< Updated upstream
 int largoLista(NodoLista * l) {
 	if (l == NULL) {
 		return 0;
@@ -156,12 +156,79 @@ void borrarNodoRaiz(NodoAB * &A) {
 	}
 }
 
-bool sumaABB(NodoAB * a, int n)
-{
+=======
+int cantNodosEntreNiveles(NodoAB * a, int desde, int hasta) {
 	// IMPLEMENTAR SOLUCION
-	return false;
+	return 0;
 }
 
+NodoLista* camino(NodoAB * arbol, int x) {
+	NodoLista* l = new NodoLista;
+	l->dato = arbol->dato;
+	l->sig = NULL;
+	if (arbol->dato > x) {
+		l->sig = camino(arbol->izq, x);
+	}
+	else if (arbol->dato < x) {
+		l->sig = camino(arbol->der, x);
+	}
+
+	return l;
+}
+
+NodoAB* invertirHastak(NodoAB * a, int k) {
+	if (a == NULL || k == 0) {
+		return NULL;
+	}
+	else {
+		NodoAB* ab = new NodoAB;
+		ab->dato = a->dato;
+		ab->der = invertirHastak(a->izq, k - 1);
+		ab->izq = invertirHastak(a->der, k - 1);
+		return ab;
+
+	}
+}
+
+void borrarNodoRaiz(NodoAB * &A) {
+	// IMPLEMENTAR SOLUCION
+}
+
+bool existeABB(NodoAB * a, int num) {
+	if (a == NULL) {
+		return false;
+	}
+	else if (a->dato == num) {
+		return true;
+	}
+	else {
+		return existeABB(a->dato > num ? a->izq : a->der, num);
+	}
+}
+bool inOrder(NodoAB * lo, NodoAB * lb, int n) {
+	if (lb == NULL) {
+		return false;
+	}
+	inOrder(lo, lb->izq,n);
+	if (n- lb->dato != lb->dato && existeABB(lo, n - lb->dato)) {
+		return true;
+	}
+	inOrder(lo, lb->der, n);
+}
+>>>>>>> Stashed changes
+bool sumaABB(NodoAB * a, int n)
+{
+	if (a == NULL) {
+		return false;
+	}
+	else {
+		NodoAB* miron = a;
+		return inOrder(a, miron, n);
+	}
+
+}
+
+<<<<<<< Updated upstream
 NodoAB*& nodoEntre(NodoAB * &tree, int num) {
 	if (tree->izq == NULL || tree->der == NULL) {
 
@@ -174,6 +241,8 @@ NodoAB*& nodoEntre(NodoAB * &tree, int num) {
 	}
 
 }
+=======
+>>>>>>> Stashed changes
 int sucesor(NodoAB * a, int n)
 {
 

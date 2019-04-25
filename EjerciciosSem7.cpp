@@ -95,7 +95,6 @@ NodoLista* enNivel(NodoAB * a, int k) {
 	}
 }
 
-<<<<<<< Updated upstream
 int largoLista(NodoLista * l) {
 	if (l == NULL) {
 		return 0;
@@ -116,14 +115,32 @@ int cantNodosEntreNiveles(NodoAB * a, int desde, int hasta) {
 	return r;
 }
 
-NodoLista* camino(NodoAB * arbol, int x) {
-	// IMPLEMENTAR SOLUCION
-	return NULL;
+NodoLista* camino(NodoAB* arbol, int x) {
+	NodoLista* l = new NodoLista;
+	l->dato = arbol->dato;
+	l->sig = NULL;
+	if (arbol->dato > x) {
+		l->sig = camino(arbol->izq, x);
+	}
+	else if (arbol->dato < x) {
+		l->sig = camino(arbol->der, x);
+	}
+
+	return l;
 }
 
-NodoAB* invertirHastak(NodoAB * a, int k) {
-	// IMPLEMENTAR SOLUCION
-	return NULL;
+NodoAB* invertirHastak(NodoAB* a, int k) {
+	if (a == NULL || k == 0) {
+		return NULL;
+	}
+	else {
+		NodoAB* ab = new NodoAB;
+		ab->dato = a->dato;
+		ab->der = invertirHastak(a->izq, k - 1);
+		ab->izq = invertirHastak(a->der, k - 1);
+		return ab;
+
+	}
 }
 
 NodoAB*& menorDelArbol(NodoAB * &tree) {
@@ -156,44 +173,6 @@ void borrarNodoRaiz(NodoAB * &A) {
 	}
 }
 
-=======
-int cantNodosEntreNiveles(NodoAB * a, int desde, int hasta) {
-	// IMPLEMENTAR SOLUCION
-	return 0;
-}
-
-NodoLista* camino(NodoAB * arbol, int x) {
-	NodoLista* l = new NodoLista;
-	l->dato = arbol->dato;
-	l->sig = NULL;
-	if (arbol->dato > x) {
-		l->sig = camino(arbol->izq, x);
-	}
-	else if (arbol->dato < x) {
-		l->sig = camino(arbol->der, x);
-	}
-
-	return l;
-}
-
-NodoAB* invertirHastak(NodoAB * a, int k) {
-	if (a == NULL || k == 0) {
-		return NULL;
-	}
-	else {
-		NodoAB* ab = new NodoAB;
-		ab->dato = a->dato;
-		ab->der = invertirHastak(a->izq, k - 1);
-		ab->izq = invertirHastak(a->der, k - 1);
-		return ab;
-
-	}
-}
-
-void borrarNodoRaiz(NodoAB * &A) {
-	// IMPLEMENTAR SOLUCION
-}
-
 bool existeABB(NodoAB * a, int num) {
 	if (a == NULL) {
 		return false;
@@ -215,7 +194,7 @@ bool inOrder(NodoAB * lo, NodoAB * lb, int n) {
 	}
 	inOrder(lo, lb->der, n);
 }
->>>>>>> Stashed changes
+
 bool sumaABB(NodoAB * a, int n)
 {
 	if (a == NULL) {
@@ -228,7 +207,6 @@ bool sumaABB(NodoAB * a, int n)
 
 }
 
-<<<<<<< Updated upstream
 NodoAB*& nodoEntre(NodoAB * &tree, int num) {
 	if (tree->izq == NULL || tree->der == NULL) {
 
@@ -239,10 +217,8 @@ NodoAB*& nodoEntre(NodoAB * &tree, int num) {
 	else if (tree->dato < num) {
 		nodoEntre(tree->der, num);
 	}
-
+	return tree;
 }
-=======
->>>>>>> Stashed changes
 int sucesor(NodoAB * a, int n)
 {
 

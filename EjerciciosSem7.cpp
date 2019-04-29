@@ -115,7 +115,7 @@ int cantNodosEntreNiveles(NodoAB * a, int desde, int hasta) {
 	return r;
 }
 
-NodoLista* camino(NodoAB* arbol, int x) {
+NodoLista* camino(NodoAB * arbol, int x) {
 	NodoLista* l = new NodoLista;
 	l->dato = arbol->dato;
 	l->sig = NULL;
@@ -129,7 +129,7 @@ NodoLista* camino(NodoAB* arbol, int x) {
 	return l;
 }
 
-NodoAB* invertirHastak(NodoAB* a, int k) {
+NodoAB* invertirHastak(NodoAB * a, int k) {
 	if (a == NULL || k == 0) {
 		return NULL;
 	}
@@ -143,7 +143,7 @@ NodoAB* invertirHastak(NodoAB* a, int k) {
 	}
 }
 
-NodoAB*& menorDelArbol(NodoAB * &tree) {
+NodoAB * &menorDelArbol(NodoAB * &tree) {
 
 	if (tree->izq == NULL) {
 		return tree;
@@ -188,8 +188,8 @@ bool inOrder(NodoAB * lo, NodoAB * lb, int n) {
 	if (lb == NULL) {
 		return false;
 	}
-	inOrder(lo, lb->izq,n);
-	if (n- lb->dato != lb->dato && existeABB(lo, n - lb->dato)) {
+	inOrder(lo, lb->izq, n);
+	if (n - lb->dato != lb->dato && existeABB(lo, n - lb->dato)) {
 		return true;
 	}
 	inOrder(lo, lb->der, n);
@@ -206,48 +206,134 @@ bool sumaABB(NodoAB * a, int n)
 	}
 
 }
-
-NodoAB*& nodoEntre(NodoAB * &tree, int num) {
-	if (tree->izq == NULL || tree->der == NULL) {
-
+int* minPositivos(int& n1, int& n2) {
+	int* re = new int;
+	if (&n1 == NULL && &n2 == NULL) {
+		re = NULL;
 	}
-	else if (tree->dato > num) {
-		nodoEntre(tree->izq, num);
+	else if (&n1 == NULL) {
+		*re = n2;
 	}
-	else if (tree->dato < num) {
-		nodoEntre(tree->der, num);
+	else if (&n2 == NULL) {
+		*re = n1;
 	}
-	return tree;
+	else if (n1 >= 0 && n2 >= 0) {
+		*re = min(n1, n2);
+	}
+	else if (n1 < 0 && n2 < 0) {
+		re = NULL;
+	}
+	else {
+		*re = n1 >= 0 ? n1 : n2;
+	}
+	return re;
+}
+int* menorMasCercano(NodoAB * ar, int n) {
+	if (ar == NULL) {
+		return NULL;
+	}
+	int res = ar->dato - n;
+	if (res > 0) {
+		return minPositivos(res, *minPositivos(*menorMasCercano(ar->izq, n), *menorMasCercano(ar->der, n)));
+	}
+	else {
+		return minPositivos(*menorMasCercano(ar->izq, n), *menorMasCercano(ar->der, n));
+	}
 }
 int sucesor(NodoAB * a, int n)
 {
+	int* num = menorMasCercano(a, n);
+	int j = 3;
 
-	return 0;
+	if (num == NULL) {
+		num = new int;
+		*num = -1;
+	}
+	else {
+		*num = *num + n;
+	}
+
+	return *num;
+}
+
+void cargarArr(NodoAB * a, int esta, int hasta, int*& arr) {
+	if (a != NULL) {
+		cargarArr(a->izq, esta + 1, hasta, arr);
+		if (esta <= hasta) {
+			arr[esta]++;
+		}
+		cargarArr(a->der, esta + 1, hasta, arr);
+	}
+}
+int mayor(int* arr, int largo) {
+	if (arr == NULL) {
+		return 0;
+	}
+	int m = arr[0];
+
+	for (int i = 0; i < largo; i++) {
+		m = arr[i] > m ? arr[i] : m;
+	}
+	for (int i = 0; i < largo; i++)
+	{
+		if (arr[i] == m) {
+			return i;
+		}
+	}
+
 }
 
 int nivelMasNodos(NodoAB * raiz, int nivelHasta) {
-	// IMPLEMENTAR SOLUCION
-	return 0;
+	int* ar = new int[nivelHasta + 1]();
+
+	cargarArr(raiz, 1, nivelHasta + 1, ar);
+	int ma = mayor(ar, nivelHasta + 1);
+	return ma;
 }
 
 void borrarPares(NodoAB * &a) {
-	// IMPLEMENTAR SOLUCION
+	if (a != NULL) {
+		if (a->dato % 2 == 0) {
+			NodoAB* miron = a;
+			//if()
+		}
+	}
 }
 
 int alturaAG(NodoAG * raiz)
 {
-	// IMPLEMENTAR SOLUCION
-	return 0;
+
+	return raiz == NULL ? 0 : max(alturaAG(raiz->sh), alturaAG(raiz->ph) + 1);
 }
 
+int sumaAux(NodoAG * a, int nivel) {
+
+	return a == NULL ? 0 : ((nivel % 2 == 0 ? a->dato : -a->dato) + sumaAux(a->ph, nivel + 1) + sumaAux(a->sh, nivel));
+}
 int sumaPorNiveles(NodoAG * raiz) {
-	// IMPLEMENTAR SOLUCION
-	return 0;
+	return sumaAux(raiz, 1);
 }
 
 bool esPrefijo(NodoAG * a, NodoLista * l)
 {
-	// IMPLEMENTAR SOLUCION
+	if (l == NULL) {
+		return true;
+	}
+	else if (a == NULL && l == NULL) {
+		return true;
+	}
+	else if (a == NULL && l != NULL) {
+		return false;
+	}
+	else {
+		if (a->dato == l->dato) {
+			if (a->ph != NULL && a->ph->dato == l->sig->dato) {
+				return esPrefijo(a->ph)
+			}
+		}
+	}
+
+
 	return false;
 }
 

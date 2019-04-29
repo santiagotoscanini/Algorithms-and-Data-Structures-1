@@ -288,6 +288,7 @@ int nivelMasNodos(NodoAB * raiz, int nivelHasta) {
 
 	cargarArr(raiz, 1, nivelHasta + 1, ar);
 	int ma = mayor(ar, nivelHasta + 1);
+	//delete ar;
 	return ma;
 }
 
@@ -295,7 +296,12 @@ void borrarPares(NodoAB * &a) {
 	if (a != NULL) {
 		if (a->dato % 2 == 0) {
 			NodoAB* miron = a;
-			//if()
+			borrarNodoRaiz(a);
+			borrarPares(a);		
+		}
+		else {
+			borrarPares(a->izq);
+			borrarPares(a->der);
 		}
 	}
 }
@@ -327,14 +333,12 @@ bool esPrefijo(NodoAG * a, NodoLista * l)
 	}
 	else {
 		if (a->dato == l->dato) {
-			if (a->ph != NULL && a->ph->dato == l->sig->dato) {
-				return esPrefijo(a->ph)
-			}
+			return esPrefijo(a->ph, l->sig);
+		}
+		else {
+			return esPrefijo(a->sh, l);
 		}
 	}
-
-
-	return false;
 }
 
 NodoLista* caminoAG(NodoAG * arbolGeneral, int dato) {

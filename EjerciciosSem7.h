@@ -350,7 +350,7 @@ POS: Retorna una lista con los datos en el camino de la raiz al número dado.
 	 Si el número está repetido retorna el camino que incluya a los primeros hermanos.
      Si el número no se encuentra en el árbol retorna NULL.
 	 No se permite usar funciones o procedimientos auxiliares en este ejercicio.
-	 Resolver en O(n).
+	 Resolver en O(n). 
 
 	Ejemplo:    ENTRADA   
 				ARBOL              DATO 5;
@@ -371,7 +371,7 @@ PRE: Recibe un arbol general implementado como un arbol binario (primer hijo – s
 POS: Retorna el nivel con mas nodos del AG. En caso de haber mas de un nivel con la misma cantidad 
 	 de nodos retorna el menor. La  raíz se encuentra en el nivel 1.
 	 NOTA: Esta operación se puede realizar en O(n).
-
+	  
 		Ejemplo:    ENTRADA   
 				ARBOL              
 				  1					Nivel 1

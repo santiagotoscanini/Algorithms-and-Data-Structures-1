@@ -61,7 +61,8 @@ bool esArbolBalanceado(NodoAB * raiz) {
 	int ai = altura(raiz->izq);
 	int ad = altura(raiz->der);
 
-	return (ai == ad || (ai - 1) == ad || ai == (ad - 1));
+	return (ai == ad || (ai - 1) == ad || ai == (ad - 1)) && esArbolBalanceado(raiz->izq) && esArbolBalanceado(raiz->der);
+
 }
 
 NodoLista * concatL(NodoLista * a, NodoLista * b) {
@@ -314,7 +315,8 @@ int sumaAux(NodoAG * a, int nivel) {
 
 	return a == NULL ? 0 : ((nivel % 2 == 0 ? a->dato : -a->dato) + sumaAux(a->ph, nivel + 1) + sumaAux(a->sh, nivel));
 }
-int sumaPorNiveles(NodoAG* raiz) {
+
+int sumaPorNiveles(NodoAG * raiz) {
 	return sumaAux(raiz, 1);
 }
 

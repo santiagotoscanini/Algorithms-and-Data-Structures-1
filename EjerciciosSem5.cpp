@@ -356,7 +356,7 @@ bool palindromo(NodoLista * l)
 	return false;
 }
 
-void eliminarSecuencia(NodoLista * &l, NodoLista * secuencia)
+void eliminarSecuencia(NodoLista*& l, NodoLista* secuencia)
 {
 	if (l != NULL && secuencia != NULL) {
 		if (l->dato != secuencia->dato) {
@@ -384,10 +384,78 @@ void eliminarSecuencia(NodoLista * &l, NodoLista * secuencia)
 		}
 	}
 }
+bool insertarNodo(NodoLista*& lista, NodoLista *nodo, int num) {
+	if (lista != NULL) {
+		if (num == 1) {
+			NodoLista* aux = lista;
+			lista = nodo;
+			nodo->sig = aux;
+			return true;
+		}
+		else {
+			return insertarNodo(lista->sig, nodo, num - 1);
+		}
+	}
+	else {
+		return false;
+	}
+}
+
+NodoLista* borraDevuelve(NodoLista *& lista, int inicial) {
+	if (lista != NULL) {
+		if (inicial == 1) {
+			NodoLista* aux = lista;
+			NodoLista* devolver = new NodoLista;
+			devolver->dato = lista->dato;
+			devolver->sig = NULL;
+			lista = lista->sig;
+
+			delete aux;
+
+			return devolver;
+		}
+		else {
+			return borraDevuelve(lista->sig, inicial - 1);
+		}
+	}
+	else {
+		return NULL;
+	}
+}
 
 void moverNodo(NodoLista * &lista, unsigned int inicial, unsigned int final)
 {
+	if (lista != NULL) {
+		if (inicial == 1) {
 
+			NodoLista* aux = lista;
+
+			NodoLista* nodoNuevo = new NodoLista;
+			nodoNuevo->dato = aux->dato;
+			nodoNuevo->sig = NULL;
+
+			lista = lista->sig;
+
+			if (!insertarNodo(lista, nodoNuevo, final)) {
+				lista = aux;
+				delete nodoNuevo;
+			}
+			else {
+				delete[]aux;
+			}
+		}
+		else if (final == 1)
+		{
+			NodoLista* aux = lista;
+			NodoLista* agregar = borraDevuelve(lista, inicial);
+			if (agregar != NULL) {
+				lista = agregar;
+				lista->sig = aux;
+			}
+		}
+		else {
+			moverNodo(lista->sig, inicial - 1, final - 1);
+		}
+	}
 }
-
 #endif

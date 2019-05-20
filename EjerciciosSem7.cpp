@@ -81,19 +81,33 @@ NodoLista * concatL(NodoLista * a, NodoLista * b) {
 }
 
 NodoLista* enNivel(NodoAB * a, int k) {
-	k--;
-	if (a == NULL) {
-		return NULL;
+	//k--;
+	//if (a == NULL) {
+	//	return NULL;
+	//}
+	//else if (k == 0) {
+	//	NodoLista* l = new NodoLista;
+	//	l->dato = a->dato;
+	//	l->sig = NULL;
+	//	return l;
+	//}
+	//else {
+	//	return concatL(enNivel(a->izq, k), enNivel(a->der, k));
+	//}
+
+	NodoLista* l = NULL;
+	if (a != NULL) {
+		l = enNivel(a->izq, k);
+		NodoLista* aux = l;
+		while (aux!=NULL)
+		{
+			aux = aux->sig;
+		}
+		aux = new NodoLista;
+		aux->dato = a->dato;
+		aux->sig = enNivel(a->der, k);
 	}
-	else if (k == 0) {
-		NodoLista* l = new NodoLista;
-		l->dato = a->dato;
-		l->sig = NULL;
-		return l;
-	}
-	else {
-		return concatL(enNivel(a->izq, k), enNivel(a->der, k));
-	}
+	return l;
 }
 
 int largoLista(NodoLista * l) {
